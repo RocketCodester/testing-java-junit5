@@ -41,10 +41,9 @@ public class VisitController {
     public String processNewVisitForm(@Valid Visit visit, BindingResult result) {
         if (result.hasErrors()) {
             return "pets/createOrUpdateVisitForm";
-        } else {
-            visitService.save(visit);
-
-            return "redirect:/owners/{ownerId}";
         }
+        visitService.save(visit);
+
+        return "redirect:/owners/{ownerId}";
     }
 }

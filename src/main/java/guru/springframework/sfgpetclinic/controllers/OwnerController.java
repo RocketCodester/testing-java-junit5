@@ -42,15 +42,15 @@ public class OwnerController {
             // no owners found
             result.rejectValue("lastName", "notFound", "not found");
             return "owners/findOwners";
-        } else if (results.size() == 1) {
+        }
+        if (results.size() == 1) {
             // 1 owner found
             owner = results.get(0);
             return "redirect:/owners/" + owner.getId();
-        } else {
-            // multiple owners found
-            model.addAttribute("selections", results);
-            return "owners/ownersList";
         }
+        // multiple owners found
+        model.addAttribute("selections", results);
+        return "owners/ownersList";
     }
 
     public ModelAndView showOwner(Long ownerId) {
